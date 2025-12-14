@@ -1,47 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Matchs du jour</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FootActu - Matchs du jour</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-<h1>Matchs du jour ⚽</h1>
-<nav>
-<a href="index.html">Accueil</a>
-<a href="classement.html">Classements</a>
-</nav>
-</header>
+  <header>
+    <h1>⚽ FootActu</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="matchs.html" class="active">Matchs</a>
+      <a href="classement.html">Classements</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
 
-<main>
-<div id="matches" class="news-grid"></div>
-</main>
+  <main class="matchs">
+    <h2>Matchs du jour</h2>
 
-<script src="script.js"></script>
+    <div class="match-card">
+      <span class="league">Ligue 1</span>
+      <div class="teams">
+        <span>PSG</span>
+        <strong>vs</strong>
+        <span>Marseille</span>
+      </div>
+      <div class="info">
+        <span>20:45</span>
+        <span>Stade : Parc des Princes</span>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <span class="league">Premier League</span>
+      <div class="teams">
+        <span>Manchester City</span>
+        <strong>vs</strong>
+        <span>Liverpool</span>
+      </div>
+      <div class="info">
+        <span>18:30</span>
+        <span>Etihad Stadium</span>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <p>© 2025 FootActu - Tous droits réservés</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
-<select id="competitionSelect">
-<optgroup label="Championnat">
-<option value="61">France - Ligue 1</option>
-<option value="135">Italie - Serie A</option>
-<option value="140">Espagne - La Liga</option>
-<option value="78">Allemagne - Bundesliga</option>
-<option value="39">Angleterre - Premier League</option>
-</optgroup>
-
-<optgroup label="Compétitions européennes">
-<option value="2">Ligue des Champions</option>
-<option value="3">Ligue Europa</option>
-</optgroup>
-
-<optgroup label="Compétitions internationales">
-<option value="1">Coupe du Monde</option>
-<option value="4">Euro</option>
-<option value="6">Coupe d’Afrique (CAN)</option>
-</optgroup>
-</select>
-
-<hr>
