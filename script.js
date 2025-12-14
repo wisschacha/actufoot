@@ -147,15 +147,16 @@ function afficherClassement() {
 }
 
 // ================= INIT =================
+//document.addEventListener("DOMContentLoaded", () => {
+//  afficherMatchs();
+//  afficherClassement();
+//});
+
 document.addEventListener("DOMContentLoaded", () => {
-  afficherMatchs();
-  afficherClassement();
+  chargerMatchsAPI();
+  chargerClassementAPI();
 });
 
-//document.addEventListener("DOMContentLoaded", () => {
-//  chargerMatchsAPI();
-//  chargerClassementAPI();
-//});
 
 
 
