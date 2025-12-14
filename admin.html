@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Admin</title>
+</head>
+<body>
+
+<h2>Connexion Admin</h2>
+
+<input type="password" id="password" placeholder="Mot de passe">
+<button onclick="login()">Connexion</button>
+
+<div id="adminPanel" style="display:none;">
+<h3>Nouvel article</h3>
+<input id="title" placeholder="Titre"><br><br>
+<textarea id="content" placeholder="Contenu"></textarea><br><br>
+<button onclick="publish()">Publier</button>
+</div>
+
+<script src="auth.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>
