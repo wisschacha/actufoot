@@ -1,133 +1,81 @@
-const API_KEY = "TA_CLE_API";
-const headers = { "x-apisports-key": API_KEY };
+// ================= MATCHS DU JOUR =================
+const matchs = [
+  {
+    league: "Ligue 1",
+    team1: "PSG",
+    team2: "Marseille",
+    time: "20:45",
+    stadium: "Parc des Princes"
+  },
+  {
+    league: "Premier League",
+    team1: "Manchester City",
+    team2: "Liverpool",
+    time: "18:30",
+    stadium: "Etihad Stadium"
+  }
+];
 
-// MATCHS DU JOUR
-fetch("https://v3.football.api-sports.io/fixtures?date=2025-01-01", { headers })
-.then(res => res.json())
-.then(data => {
-const container = document.getElementById("matches");
-data.response.forEach(match => {
-container.innerHTML += `
-<div class="card">
-<h4>${match.teams.home.name} ${match.goals.home ?? "-"}
-- ${match.goals.away ?? "-"} ${match.teams.away.name}</h4>
-<p>${match.fixture.status.long}</p>
-</div>
-`;
-});
-});
+function afficherMatchs() {
+  const container = document.querySelector(".matchs");
+  if (!container) return;
 
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-<meta charset="UTF-8">
-<title>Classement</title>
-<link rel="stylesheet" href="style.css">
-</head>
-<body>
+  container.innerHTML = "<h2>Matchs du jour</h2>";
 
-<header>
-<h1>Classements ⚽</h1>
-<nav>
-<a href="index.html">Accueil</a>
-<a href="matchs.html">Matchs</a>
-</nav>
-</header>
+  matchs.forEach(match => {
+    const div = document.createElement("div");
+    div.className = "match-card";
 
-<main>
-<table id="standings">
-<tr>
-<th>#</th><th>Équipe</th><th>Pts</th><th>MJ</th>
-</tr>
-</table>
-</main>
+    div.innerHTML = `
+      <span class="league">${match.league}</span>
+      <div class="teams">
+        <span>${match.team1}</span>
+        <strong>vs</strong>
+        <span>${match.team2}</span>
+      </div>
+      <div class="info">
+        <span>${match.time}</span>
+        <span>${match.stadium}</span>
+      </div>
+    `;
 
-<script src="script.js"></script>
-</body>
-</html>
-
-const API_KEY = "TA_CLE_API";
-const headers = { "x-apisports-key": API_KEY };
-
-const competitionSelect = document.getElementById("competitionSelect");
-const matchesContainer = document.getElementById("matches");
-
-function loadMatches(leagueId) {
-const today = new Date().toISOString().split("T")[0];
-
-fetch(`https://v3.football.api-sports.io/fixtures?league=${leagueId}&season=2024&date=${today}`, { headers })
-.then(res => res.json())
-.then(data => {
-matchesContainer.innerHTML = "";
-
-if (data.response.length === 0) {
-matchesContainer.innerHTML = "<p>Aucun match aujourd’hui</p>";
-return;
+    container.appendChild(div);
+  });
 }
 
-data.response.forEach(match => {
-matchesContainer.innerHTML += `
-<div class="card">
-<h4>
-${match.teams.home.name}
-${match.goals.home ?? "-"}
--
-${match.goals.away ?? "-"}
-${match.teams.away.name}
-</h4>
-<p>${match.fixture.status.long}</p>
-</div>
-`;
-});
-});
+// ================= CLASSEMENT =================
+const classement = [
+  { pos: 1, equipe: "PSG", pts: 38, j: 15, g: 12, n: 2, p: 1, diff: "+25" },
+  { pos: 2, equipe: "Monaco", pts: 32, j: 15, g: 10, n: 2, p: 3, diff: "+15" },
+  { pos: 3, equipe: "Marseille", pts: 29, j: 15, g: 8, n: 5, p: 2, diff: "+10" }
+];
+
+function afficherClassement() {
+  const tbody = document.querySelector(".classement-table tbody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
+
+  classement.forEach(team => {
+    const tr = document.createElement("tr");
+
+    tr.innerHTML = `
+      <td>${team.pos}</td>
+      <td>${team.equipe}</td>
+      <td>${team.pts}</td>
+      <td>${team.j}</td>
+      <td>${team.g}</td>
+      <td>${team.n}</td>
+      <td>${team.p}</td>
+      <td>${team.diff}</td>
+    `;
+
+    tbody.appendChild(tr);
+  });
 }
 
-// Chargement initial
-loadMatches(competitionSelect.value);
-
-// Changement de compétition
-competitionSelect.addEventListener("change", () => {
-loadMatches(competitionSelect.value);
-});
-
-function loadStandings(leagueId) {
-fetch(`https://v3.football.api-sports.io/standings?league=${leagueId}&season=2024`, { headers })
-.then(res => res.json())
-.then(data => {
-const table = document.getElementById("standings");
-table.innerHTML = `
-<tr>
-<th>#</th>
-<th>Équipe</th>
-<th>Pts</th>
-<th>MJ</th>
-</tr>
-`;
-
-// Certaines compétitions n’ont pas de classement
-if (!data.response.length) {
-table.innerHTML += `<tr><td colspan="4">Pas de classement disponible</td></tr>`;
-return;
-}
-
-const standings = data.response[0].league.standings[0];
-standings.forEach(team => {
-table.innerHTML += `
-<tr>
-<td>${team.rank}</td>
-<td>${team.team.name}</td>
-<td>${team.points}</td>
-<td>${team.all.played}</td>
-</tr>
-`;
-});
-});
-}
-
-// Chargement initial
-loadStandings(competitionSelect.value);
-
-// Changement compétition
-competitionSelect.addEventListener("change", () => {
-loadStandings(competitionSelect.value);
+// ================= INIT =================
+document.addEventListener("DOMContentLoaded", () => {
+  afficherMatchs();
+  afficherClassement();
 });
