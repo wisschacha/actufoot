@@ -1,4 +1,4 @@
-const API_KEY = "TA_CLE_API_ICI";
+const API_KEY = "87a14269536cc2d81bb4d0b1ce3398b0";
 const API_URL = "https://v3.football.api-sports.io";
 
 const matchs = JSON.parse(localStorage.getItem("matchs")) || [];
@@ -85,5 +85,6 @@ document.addEventListener("DOMContentLoaded", () => {
   afficherMatchs();
   afficherClassement();
 });
+
 
 
