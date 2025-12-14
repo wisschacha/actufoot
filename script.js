@@ -91,6 +91,37 @@ function afficherMatchs() {
 //  { pos: 3, equipe: "Marseille", pts: 29, j: 15, g: 8, n: 5, p: 2, diff: "+10" }
 //];
 
+async function chargerClassementAPI() {
+  const tbody = document.querySelector(".classement-table tbody");
+  if (!tbody) return;
+
+  const res = await fetch(`${API_URL}/standings?league=61&season=2024`, {
+    headers: {
+      "x-apisports-key": API_KEY
+    }
+  });
+
+  const data = await res.json();
+  const classement = data.response[0].league.standings[0];
+
+  tbody.innerHTML = "";
+
+  classement.forEach(team => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${team.rank}</td>
+      <td>${team.team.name}</td>
+      <td>${team.points}</td>
+      <td>${team.all.played}</td>
+      <td>${team.all.win}</td>
+      <td>${team.all.draw}</td>
+      <td>${team.all.lose}</td>
+      <td>${team.goalsDiff}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
 function afficherClassement() {
   const tbody = document.querySelector(".classement-table tbody");
   if (!tbody) return;
@@ -120,6 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
   afficherMatchs();
   afficherClassement();
 });
+
 
 
 
