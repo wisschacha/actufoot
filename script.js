@@ -22,6 +22,41 @@ const classement = JSON.parse(localStorage.getItem("classement")) || [];
 //  }
 //];
 
+async function chargerMatchsAPI() {
+  const container = document.querySelector(".matchs");
+  if (!container) return;
+
+  container.innerHTML = "<h2>Matchs du jour</h2>";
+
+  const res = await fetch(`${API_URL}/fixtures?date=2025-12-14`, {
+    headers: {
+      "x-apisports-key": API_KEY
+    }
+  });
+
+  const data = await res.json();
+
+  data.response.forEach(match => {
+    const div = document.createElement("div");
+    div.className = "match-card";
+
+    div.innerHTML = `
+      <span class="league">${match.league.name}</span>
+      <div class="teams">
+        <span>${match.teams.home.name}</span>
+        <strong>vs</strong>
+        <span>${match.teams.away.name}</span>
+      </div>
+      <div class="info">
+        <span>${match.fixture.date.substring(11,16)}</span>
+        <span>${match.fixture.venue.name}</span>
+      </div>
+    `;
+
+    container.appendChild(div);
+  });
+}
+
 function afficherMatchs() {
   const container = document.querySelector(".matchs");
   if (!container) return;
@@ -85,6 +120,7 @@ document.addEventListener("DOMContentLoaded", () => {
   afficherMatchs();
   afficherClassement();
 });
+
 
 
 
