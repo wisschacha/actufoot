@@ -8,44 +8,53 @@
 </head>
 <body>
 
-  <header>
-    <h1>⚽ FootActu – Admin</h1>
-    <nav>
-      <a href="index.html">Accueil</a>
-      <a href="matchs.html">Matchs</a>
-      <a href="classement.html">Classements</a>
-    </nav>
-  </header>
-
-  <main class="admin">
-    <h2>Ajouter un match</h2>
-    <form id="matchForm">
-      <input type="text" placeholder="Ligue" id="league" required />
-      <input type="text" placeholder="Équipe 1" id="team1" required />
-      <input type="text" placeholder="Équipe 2" id="team2" required />
-      <input type="text" placeholder="Heure" id="time" required />
-      <input type="text" placeholder="Stade" id="stadium" required />
-      <button type="submit">Ajouter le match</button>
+  <main class="login" id="loginBox">
+    <h2>Connexion Admin</h2>
+    <form id="loginForm">
+      <input type="password" id="password" placeholder="Mot de passe admin" required />
+      <button type="submit">Se connecter</button>
     </form>
-
-    <h2>Modifier le classement</h2>
-    <form id="classementForm">
-      <input type="number" placeholder="Position" id="pos" required />
-      <input type="text" placeholder="Équipe" id="equipe" required />
-      <input type="number" placeholder="Points" id="pts" required />
-      <input type="number" placeholder="Joués" id="j" required />
-      <input type="number" placeholder="Gagnés" id="g" required />
-      <input type="number" placeholder="Nuls" id="n" required />
-      <input type="number" placeholder="Perdus" id="p" required />
-      <input type="text" placeholder="Diff" id="diff" required />
-      <button type="submit">Enregistrer</button>
-    </form>
+    <p id="error" class="error"></p>
   </main>
 
-  <footer>
-    <p>© 2025 FootActu</p>
-  </footer>
+  <div id="adminContent" style="display:none;">
+    <header>
+      <h1>⚽ FootActu – Admin</h1>
+      <nav>
+        <a href="index.html">Accueil</a>
+        <a href="matchs.html">Matchs</a>
+        <a href="classement.html">Classements</a>
+        <button id="logout">Déconnexion</button>
+      </nav>
+    </header>
 
+    <main class="admin">
+      <h2>Ajouter un match</h2>
+      <form id="matchForm">
+        <input type="text" placeholder="Ligue" id="league" required />
+        <input type="text" placeholder="Équipe 1" id="team1" required />
+        <input type="text" placeholder="Équipe 2" id="team2" required />
+        <input type="text" placeholder="Heure" id="time" required />
+        <input type="text" placeholder="Stade" id="stadium" required />
+        <button type="submit">Ajouter le match</button>
+      </form>
+
+      <h2>Modifier le classement</h2>
+      <form id="classementForm">
+        <input type="number" placeholder="Position" id="pos" required />
+        <input type="text" placeholder="Équipe" id="equipe" required />
+        <input type="number" placeholder="Points" id="pts" required />
+        <input type="number" placeholder="Joués" id="j" required />
+        <input type="number" placeholder="Gagnés" id="g" required />
+        <input type="number" placeholder="Nuls" id="n" required />
+        <input type="number" placeholder="Perdus" id="p" required />
+        <input type="text" placeholder="Diff" id="diff" required />
+        <button type="submit">Enregistrer</button>
+      </form>
+    </main>
+  </div>
+
+  <script src="auth.js"></script>
   <script src="admin.js"></script>
 </body>
 </html>
