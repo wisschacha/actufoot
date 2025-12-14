@@ -1,53 +1,78 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Classement</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FootActu - Classements</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-<header>
-<h1>Classements ⚽</h1>
-<nav>
-<a href="index.html">Accueil</a>
-<a href="matchs.html">Matchs</a>
-</nav>
-</header>
+  <header>
+    <h1>⚽ FootActu</h1>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="matchs.html">Matchs</a>
+      <a href="classement.html" class="active">Classements</a>
+      <a href="admin.html">Admin</a>
+    </nav>
+  </header>
 
-<main>
-<select id="competitionSelect"></select>
-<table id="standings">
-<tr>
-<th>#</th><th>Équipe</th><th>Pts</th><th>MJ</th>
-</tr>
-</table>
-</main>
+  <main class="classement">
+    <h2>Classement - Ligue 1</h2>
 
-<script src="script.js"></script>
+    <table class="classement-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Équipe</th>
+          <th>Pts</th>
+          <th>J</th>
+          <th>G</th>
+          <th>N</th>
+          <th>P</th>
+          <th>Diff</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>PSG</td>
+          <td>38</td>
+          <td>15</td>
+          <td>12</td>
+          <td>2</td>
+          <td>1</td>
+          <td>+25</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Monaco</td>
+          <td>32</td>
+          <td>15</td>
+          <td>10</td>
+          <td>2</td>
+          <td>3</td>
+          <td>+15</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Marseille</td>
+          <td>29</td>
+          <td>15</td>
+          <td>8</td>
+          <td>5</td>
+          <td>2</td>
+          <td>+10</td>
+        </tr>
+      </tbody>
+    </table>
+  </main>
+
+  <footer>
+    <p>© 2025 FootActu - Tous droits réservés</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
-<select id="competitionSelect">
-<optgroup label="Championnat">
-<option value="61">France - Ligue 1</option>
-<option value="135">Italie - Serie A</option>
-<option value="140">Espagne - La Liga</option>
-<option value="78">Allemagne - Bundesliga</option>
-<option value="39">Angleterre - Premier League</option>
-</optgroup>
-
-<optgroup label="Compétitions européennes">
-<option value="2">Ligue des Champions</option>
-<option value="3">Ligue Europa</option>
-</optgroup>
-
-<optgroup label="Compétitions internationales">
-<option value="1">Coupe du Monde</option>
-<option value="4">Euro</option>
-<option value="6">Coupe d’Afrique (CAN)</option>
-</optgroup>
-</select>
-
-<hr>
-
